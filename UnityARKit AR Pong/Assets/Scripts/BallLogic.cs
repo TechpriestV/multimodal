@@ -49,14 +49,21 @@ public class BallLogic : MonoBehaviour
             case "Bounds East":
             case "Bounds West":
                 velocity.x *= -1f;
+                SFXController.PlaySound("wallB");
                 return;
             case "Bounds North":
+                ResetBall();
+                gameLogic.IncrementScore(collision.transform.name);
+                SFXController.PlaySound("playerScore");
+                return;
             case "Bounds South":
                 ResetBall();
                 gameLogic.IncrementScore(collision.transform.name);
+                SFXController.PlaySound("compScore");
                 return;
             case "Player Paddle":
             case "Computer Paddle":
+                SFXController.PlaySound("paddleB");
                 velocity.z *= -1f;
                 return;
         }
