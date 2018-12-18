@@ -21,7 +21,7 @@ Some design and recolouring perhaps?
 
 ### UI
 Very basic.
-Do we want to ad a menu?
+Do we want to add a menu?
 
 ### Game rules
 Should we add a win condition? (e.g. first to 5 points)
