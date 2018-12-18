@@ -19,7 +19,8 @@ public class ComputerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 newPos = transform.position;
-        newPos.x = Mathf.Lerp(transform.position.x, ball.position.x, skill);
+        newPos.x = Mathf.Lerp(transform.position.x, ball.position.x, skill*.3f);
+        newPos.y = Mathf.Lerp(transform.position.y, ball.position.y, skill*.3f);
         transform.position = newPos;
 	}
 }

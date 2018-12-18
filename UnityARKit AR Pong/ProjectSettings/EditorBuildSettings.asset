@@ -47,10 +47,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UnityARKitPlugin/Examples/ARKit2.0/UnityARObjectAnchor/UnityARObjectAnchor.unity
     guid: 9b7966300d2d04d8e86ace41d59d178c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PongARScene.unity
     guid: 4b7070d3ad364432691383fd8937b692
   - enabled: 0
     path: Assets/Scenes/OLD.unity
     guid: c929205de83384b028dc14704d16379d
+  - enabled: 1
+    path: Assets/Scenes/PongARScene v2.unity
+    guid: 4c0791bc9deec41e59910cb0ff838624
   m_configObjects: {}

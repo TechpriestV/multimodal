@@ -13,7 +13,7 @@ public class BallLogic : MonoBehaviour
     Vector3 velocity;
 
     [Range(0, 1)]
-    public float speed = 0.1f;  // public makes it vis in unity
+    public float speed;  // public makes it vis in unity
 
     void Start()
     {
@@ -25,7 +25,8 @@ public class BallLogic : MonoBehaviour
         transform.position = Vector3.zero; //setting pos to (0,0,0)
         float z = Random.Range(0, 2) * 2f - 1f;
         float x = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
-        velocity = new Vector3(x, 0, z);
+        float y = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
+        velocity = new Vector3(x, y, z);
     }
 
 
@@ -35,7 +36,7 @@ public class BallLogic : MonoBehaviour
 
     void FixedUpdate()
     {
-        velocity = velocity.normalized * speed;
+        velocity = velocity.normalized * speed * 0.05f;
         transform.position += velocity;
     }
 
@@ -49,6 +50,11 @@ public class BallLogic : MonoBehaviour
             case "Bounds East":
             case "Bounds West":
                 velocity.x *= -1f;
+                SFXController.PlaySound("wallB");
+                return;
+            case "Bounds Upper":
+            case "Bounds Lower":
+                velocity.y *= -1f;
                 SFXController.PlaySound("wallB");
                 return;
             case "Bounds North":
