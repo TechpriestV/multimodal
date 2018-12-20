@@ -90,6 +90,10 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
@@ -465,5 +469,8 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# An attempt to include meta files
+!*.*.meta
 
 # End of https://www.gitignore.io/api/unity,macos,windows,sublimetext,visualstudio,visualstudiocode
