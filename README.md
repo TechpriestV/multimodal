@@ -21,10 +21,11 @@ Some design and recolouring perhaps?
 
 ### UI
 Very basic.
-Do we want to add a menu?
+A very basic menu where you can choose between to play, read about the game or exit the application.
+When someone wins a "game over" objects appears with who won and if you want to play again. 
 
 ### Game rules
-Should we add a win condition? (e.g. first to 5 points)
+The first one to score 5 times wins. 
 Should score be displayed in augumented reality, projected in the real world - or as currently implemented?
 
 ### SFX

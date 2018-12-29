@@ -20,7 +20,7 @@ public class BallLogic : MonoBehaviour
         ResetBall();
     }
 
-    void ResetBall()
+    public void ResetBall()
     {
         transform.position = Vector3.zero; //setting pos to (0,0,0)
         float z = Random.Range(0, 2) * 2f - 1f;
@@ -28,8 +28,10 @@ public class BallLogic : MonoBehaviour
         float y = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
         velocity = new Vector3(x, y, z);
     }
-
-
+    public void Stop()
+    {
+        velocity = Vector3.zero;
+    }
     // Update is called once per frame
     // FixedUpdate instead of update to make sure its 
     // in sync /w physics
