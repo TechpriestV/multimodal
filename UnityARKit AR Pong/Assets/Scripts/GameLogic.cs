@@ -14,6 +14,12 @@ public class GameLogic : MonoBehaviour {
     public BallLogic ballLogic;
     public GameObject Button;
 
+    public enum CountRules {Bounces, Score}
+    public CountRules ctRules;
+
+    private int bounces;
+    public int scoreLimit = 5;
+
     // public static function so that ball logic can call this 
     // w/o having to reference the gamelogic
 
@@ -22,32 +28,68 @@ public class GameLogic : MonoBehaviour {
         switch(colliderName) {
             case "Bounds South":
                 computerScore++;
-                txtComputerScore.text = "Computer: " + computerScore;
-                if (computerScore == 5)
-                    GameOver();
-                    winner.text = "Computer winns!";
+                updateText();
+                CheckGameOver(computerScore, "Computer");
                 return;
             case "Bounds North":
                 playerScore++;
-                txtPlayerScore.text = "Player: " + playerScore;
-                if (playerScore == 5)
-                    GameOver();
-                    winner.text = "Player winns!";
+                updateText();
+                CheckGameOver(computerScore, "Player");
                 return;
         }
        
     }
 
+    public void CountBounces(){
+        bounces++;
+        updateText();
+    }
+
     // Use this for initialization
     void Start () {
-
+        
         Button.SetActive(false);
+        if (ctRules.ToString() == "Score"){
+            txtPlayerScore.text = "Player: 0";
+            txtComputerScore.text = "Computer: 0";
+        }else if (ctRules.ToString() == "Bounces"){
+            txtPlayerScore.text = "Bounces: " + bounces;
+            txtComputerScore.text = "";
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
+
+    private void updateText() {
+        if (ctRules.ToString() == "Score")
+        {
+            txtPlayerScore.text = "Player: " + playerScore;
+            txtComputerScore.text = "Computer: " + computerScore;
+        }
+        else if (ctRules.ToString() == "Bounces")
+        {
+            txtPlayerScore.text = "Bounces: " + bounces;
+        }
+    }
+
+    private void CheckGameOver(int value, string entity) {
+        if (ctRules.ToString() == "Score") {
+            if (value >= scoreLimit) {
+                winner.text = entity + " winns!";
+                GameOver();
+            }
+        } else if (ctRules.ToString() == "Bounces") {
+            if (entity == "Computer"){
+                winner.text = "You missed!\nYou managed to bounce the ball " + bounces + " times!";
+                GameOver();
+            }
+        } else {
+            throw new UnityException("Unknown gamemode!");
+        }
+    }
 
     public void GameOver()
     {
@@ -58,6 +100,7 @@ public class GameLogic : MonoBehaviour {
     {
         playerScore = 0;
         computerScore = 0;
+        bounces = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

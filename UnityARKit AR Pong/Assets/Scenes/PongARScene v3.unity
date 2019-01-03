@@ -196,9 +196,20 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &653313849 stripped
+--- !u!1 &188922871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1553269546755882, guid: 7b787b87a373648bdbaac81c3d7332a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1007556367}
+--- !u!114 &361345053 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114497029018972076, guid: 7b787b87a373648bdbaac81c3d7332a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1007556367}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &653313849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114871831717317356, guid: 7b787b87a373648bdbaac81c3d7332a8,
     type: 2}
   m_PrefabInternal: {fileID: 1007556367}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -351,9 +362,24 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114479665161268950, guid: 7b787b87a373648bdbaac81c3d7332a8,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1732082905}
+    - target: {fileID: 1553269546755882, guid: 7b787b87a373648bdbaac81c3d7332a8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b787b87a373648bdbaac81c3d7332a8, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1012605535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114161458722007710, guid: 4c41b6bf024594bf5b13685ade813df3,
+    type: 2}
+  m_PrefabInternal: {fileID: 908110963}
+  m_Script: {fileID: 11500000, guid: fcc9c4d920e95446b90e3b80fbebd6ad, type: 3}
 --- !u!1 &1052679867
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +618,21 @@ Prefab:
       propertyPath: txtComputerScore
       value: 
       objectReference: {fileID: 653313849}
+    - target: {fileID: 114128538508594030, guid: 141895257879448f6b0731df31acb9a2,
+        type: 2}
+      propertyPath: winner
+      value: 
+      objectReference: {fileID: 361345053}
+    - target: {fileID: 114128538508594030, guid: 141895257879448f6b0731df31acb9a2,
+        type: 2}
+      propertyPath: ballLogic
+      value: 
+      objectReference: {fileID: 1012605535}
+    - target: {fileID: 114128538508594030, guid: 141895257879448f6b0731df31acb9a2,
+        type: 2}
+      propertyPath: Button
+      value: 
+      objectReference: {fileID: 188922871}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141895257879448f6b0731df31acb9a2, type: 2}
   m_IsPrefabAsset: 0
