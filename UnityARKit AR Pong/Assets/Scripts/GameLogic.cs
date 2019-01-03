@@ -48,7 +48,7 @@ public class GameLogic : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        //Button.SetActive(false);
+        Button.SetActive(false);
         if (ctRules.ToString() == "Score"){
             txtPlayerScore.text = "Player: 0";
             txtComputerScore.text = "Computer: 0";
