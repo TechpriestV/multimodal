@@ -28,12 +28,12 @@ public class GameLogic : MonoBehaviour {
         switch(colliderName) {
             case "Bounds South":
                 computerScore++;
-                txtComputerScore.text = "Computer: " + computerScore;
+                updateText();
                 CheckGameOver(computerScore, "Computer");
                 return;
             case "Bounds North":
                 playerScore++;
-                txtPlayerScore.text = "Player: " + playerScore;
+                updateText();
                 CheckGameOver(computerScore, "Player");
                 return;
         }
@@ -41,19 +41,39 @@ public class GameLogic : MonoBehaviour {
     }
 
     public void CountBounces(){
-        bounces++;    
+        bounces++;
+        updateText();
     }
 
     // Use this for initialization
     void Start () {
-
-        Button.SetActive(false);
+        
+        //Button.SetActive(false);
+        if (ctRules.ToString() == "Score"){
+            txtPlayerScore.text = "Player: 0";
+            txtComputerScore.text = "Computer: 0";
+        }else if (ctRules.ToString() == "Bounces"){
+            txtPlayerScore.text = "Bounces: " + bounces;
+            txtComputerScore.text = "";
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
+
+    private void updateText() {
+        if (ctRules.ToString() == "Score")
+        {
+            txtPlayerScore.text = "Player: " + playerScore;
+            txtComputerScore.text = "Computer: " + computerScore;
+        }
+        else if (ctRules.ToString() == "Bounces")
+        {
+            txtPlayerScore.text = "Bounces: " + bounces;
+        }
+    }
 
     private void CheckGameOver(int value, string entity) {
         if (ctRules.ToString() == "Score") {
@@ -63,7 +83,7 @@ public class GameLogic : MonoBehaviour {
             }
         } else if (ctRules.ToString() == "Bounces") {
             if (entity == "Computer"){
-                winner.text = "You missed!\nYou managed to bounce the ball " + bounces.ToString() + " times!";
+                winner.text = "You missed!\nYou managed to bounce the ball " + bounces + " times!";
                 GameOver();
             }
         } else {
