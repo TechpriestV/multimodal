@@ -69,11 +69,15 @@ public class BallLogic : MonoBehaviour
                 gameLogic.IncrementScore(collision.transform.name);
                 SFXController.PlaySound("compScore");
                 return;
-            case "Player Paddle":
+            case "Touch Paddle":
+            case "Gesture Paddle":
             case "Computer Paddle":
                 SFXController.PlaySound("paddleB");
                 velocity.z *= -1f;
                 return;
+        }
+        if (collision.transform.tag == "Player"){
+            gameLogic.CountBounces();
         }
     }
 

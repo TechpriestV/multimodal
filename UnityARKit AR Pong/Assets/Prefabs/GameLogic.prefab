@@ -58,3 +58,5 @@ MonoBehaviour:
   winner: {fileID: 0}
   ballLogic: {fileID: 0}
   Button: {fileID: 0}
+  ctRules: 0
+  scoreLimit: 5

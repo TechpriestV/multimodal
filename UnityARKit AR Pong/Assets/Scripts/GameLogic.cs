@@ -14,6 +14,12 @@ public class GameLogic : MonoBehaviour {
     public BallLogic ballLogic;
     public GameObject Button;
 
+    public enum CountRules {Bounces, Score}
+    public CountRules ctRules;
+
+    private int bounces;
+    public int scoreLimit = 5;
+
     // public static function so that ball logic can call this 
     // w/o having to reference the gamelogic
 
@@ -23,19 +29,19 @@ public class GameLogic : MonoBehaviour {
             case "Bounds South":
                 computerScore++;
                 txtComputerScore.text = "Computer: " + computerScore;
-                if (computerScore == 5)
-                    GameOver();
-                    winner.text = "Computer winns!";
+                CheckGameOver(computerScore, "Computer");
                 return;
             case "Bounds North":
                 playerScore++;
                 txtPlayerScore.text = "Player: " + playerScore;
-                if (playerScore == 5)
-                    GameOver();
-                    winner.text = "Player winns!";
+                CheckGameOver(computerScore, "Player");
                 return;
         }
        
+    }
+
+    public void CountBounces(){
+        bounces++;    
     }
 
     // Use this for initialization
@@ -49,6 +55,22 @@ public class GameLogic : MonoBehaviour {
 		
 	}
 
+    private void CheckGameOver(int value, string entity) {
+        if (ctRules.ToString() == "Score") {
+            if (value >= scoreLimit) {
+                winner.text = entity + " winns!";
+                GameOver();
+            }
+        } else if (ctRules.ToString() == "Bounces") {
+            if (entity == "Computer"){
+                winner.text = "You missed!\nYou managed to bounce the ball " + bounces.ToString() + " times!";
+                GameOver();
+            }
+        } else {
+            throw new UnityException("Unknown gamemode!");
+        }
+    }
+
     public void GameOver()
     {
         ballLogic.Stop();
@@ -58,6 +80,7 @@ public class GameLogic : MonoBehaviour {
     {
         playerScore = 0;
         computerScore = 0;
+        bounces = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
