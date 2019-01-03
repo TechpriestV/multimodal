@@ -46,6 +46,10 @@ public class BallLogic : MonoBehaviour
     //https://docs.unity3d.com/ScriptReference/Collision.html
     //https://docs.unity3d.com/ScriptReference/Collider.OnCollisionEnter.html
     {
+        if (collision.transform.tag == "Player")
+        {
+            gameLogic.CountBounces();
+        }
 
         switch (collision.transform.name)
         {
@@ -75,9 +79,6 @@ public class BallLogic : MonoBehaviour
                 SFXController.PlaySound("paddleB");
                 velocity.z *= -1f;
                 return;
-        }
-        if (collision.transform.tag == "Player"){
-            gameLogic.CountBounces();
         }
     }
 
