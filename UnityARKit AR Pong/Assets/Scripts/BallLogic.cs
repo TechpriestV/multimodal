@@ -29,17 +29,23 @@ public class BallLogic : MonoBehaviour
     public void ResetBall()
     {
         transform.position = Vector3.zero; //setting pos to (0,0,0)
-        //Wait();
-        float z =  1f;
+        StartCoroutine(WaitAndStart());
+    }
+
+    IEnumerator WaitAndStart()
+    {
+        //doesn't work for now, might be worth fixing later
+        float z = 1f;
         //float x = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
         //float y = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
+        //float x = 0f; //If you want the ball to bounce straight
+        //float y = 0f;
         float x = Random.Range(-0.3f, 0.3f);
         float y = Random.Range(-0.3f, 0.3f);
-        //float x = 0f;
-        //float y = 0f;
-
+        yield return new WaitForSecondsRealtime(2);
         velocity = new Vector3(x, y, z);
     }
+
     public void Stop()
     {
         velocity = Vector3.zero;
@@ -108,12 +114,6 @@ public class BallLogic : MonoBehaviour
                 StartCoroutine(Flasher(computerPaddle));
                 return;
         }
-    }
-
-    IEnumerator Wait()
-    {
-        //doesn't work for now, might be worth fixing later
-        yield return new WaitForSecondsRealtime(2);
     }
 
     IEnumerator Flasher(GameObject paddle) {
