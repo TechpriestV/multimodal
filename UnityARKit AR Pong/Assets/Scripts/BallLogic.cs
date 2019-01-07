@@ -42,7 +42,7 @@ public class BallLogic : MonoBehaviour
         //float y = 0f;
         float x = Random.Range(-0.3f, 0.3f);
         float y = Random.Range(-0.3f, 0.3f);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(5);
         velocity = new Vector3(x, y, z);
     }
 
