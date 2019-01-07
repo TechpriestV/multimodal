@@ -29,6 +29,7 @@ public class BallLogic : MonoBehaviour
     public void ResetBall()
     {
         transform.position = Vector3.zero; //setting pos to (0,0,0)
+        Wait();
         float z =  1f;
         //float x = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
         //float y = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
@@ -109,7 +110,12 @@ public class BallLogic : MonoBehaviour
         }
     }
 
-     IEnumerator Flasher(GameObject paddle) {
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2);
+    }
+
+    IEnumerator Flasher(GameObject paddle) {
         paddle.GetComponent<MeshRenderer>().material = Material2;
         yield return new WaitForSeconds(.15f);
         paddle.GetComponent<MeshRenderer>().material = Material1;
