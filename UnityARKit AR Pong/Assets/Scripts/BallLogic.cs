@@ -50,16 +50,22 @@ public class BallLogic : MonoBehaviour
         //float y = Random.Range(0, 2) * 2f - 1f * Random.Range(0.2f, 1f);
         //float x = 0f; //If you want the ball to bounce straight
         //float y = 0f;
-        float x = Random.Range(-0.3f, 0.3f);
-        float y = Random.Range(-0.3f, 0.3f);
+        float x = RandomizeVelocity();
+        float y = RandomizeVelocity();
         yield return new WaitForSecondsRealtime(5);
         velocity = new Vector3(x, y, z);
     }
 
-    //public void Stop()
-    //{
-    //    velocity = Vector3.zero;
-    //}
+    static float RandomizeVelocity()
+    {
+        var randomNum = Random.Range(0.1f, 0.35f);
+        if (Random.Range(0, 101) <= 50)
+        {
+            randomNum = randomNum * -1f;
+        }
+        return randomNum;
+    }
+
     // Update is called once per frame
     // FixedUpdate instead of update to make sure its 
     // in sync /w physics
