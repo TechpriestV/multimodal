@@ -23,13 +23,23 @@ public class BallLogic : MonoBehaviour
 
     void Start()
     {
-        ResetBall();
+        ResetBall("Start");
     }
 
-    public void ResetBall()
+    public void ResetBall(string BallState)
     {
         transform.position = Vector3.zero; //setting pos to (0,0,0)
-        StartCoroutine(WaitAndStart());
+        if (BallState == "Start")
+        {
+            StartCoroutine(WaitAndStart());
+        }else if (BallState == "Stop")
+        {
+            velocity = Vector3.zero;
+        }
+        else
+        {
+            throw new UnityException("Uknown parameter BallState in ResetBall()");
+        }
     }
 
     IEnumerator WaitAndStart()
@@ -46,10 +56,10 @@ public class BallLogic : MonoBehaviour
         velocity = new Vector3(x, y, z);
     }
 
-    public void Stop()
-    {
-        velocity = Vector3.zero;
-    }
+    //public void Stop()
+    //{
+    //    velocity = Vector3.zero;
+    //}
     // Update is called once per frame
     // FixedUpdate instead of update to make sure its 
     // in sync /w physics
@@ -76,6 +86,7 @@ public class BallLogic : MonoBehaviour
                 velocity.x *= -1f;
                 SFXController.PlaySound("wallB");
                 return;
+
             case "Bounds Upper":
             case "Bounds Lower":
                 velocity.y *= -1f;
@@ -86,22 +97,25 @@ public class BallLogic : MonoBehaviour
                 velocity.z *= -1f;
                 SFXController.PlaySound("wallB");
                 return;
+
             case "Bounds North":
-                ResetBall();
                 gameLogic.IncrementScore(collision.transform.name);
+                //ResetBall("Start");
                 SFXController.PlaySound("playerScore");
                 return;
 
             case "Bounds South":
-                ResetBall();
                 gameLogic.IncrementScore(collision.transform.name);
+                //ResetBall("Start");
                 SFXController.PlaySound("compScore");
                 return;
+
             case "Touch Paddle":
                 SFXController.PlaySound("paddleB");
                 velocity.z *= -1f;
                 StartCoroutine(Flasher(touchPaddle));
                 return;
+
             case "Gesture Paddle":
                 SFXController.PlaySound("paddleB");
                 velocity.z *= -1f;

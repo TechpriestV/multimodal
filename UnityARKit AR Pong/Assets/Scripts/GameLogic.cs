@@ -12,7 +12,10 @@ public class GameLogic : MonoBehaviour {
     public int computerScore;
     public Text winner;
     public BallLogic ballLogic;
-    public GameObject Button;
+    public GameObject resetButton;
+    public GameObject menuButton;
+
+
 
     public enum CountRules {Bounces, Score}
     public CountRules ctRules;
@@ -48,7 +51,8 @@ public class GameLogic : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        Button.SetActive(false);
+        resetButton.SetActive(false);
+        menuButton.SetActive(false);
         if (ctRules.ToString() == "Score"){
             txtPlayerScore.text = "Player: 0";
             txtComputerScore.text = "Computer: 0";
@@ -78,7 +82,7 @@ public class GameLogic : MonoBehaviour {
     private void CheckGameOver(int value, string entity) {
         if (ctRules.ToString() == "Score") {
             if (value >= scoreLimit) {
-                winner.text = entity + " winns!";
+                winner.text = entity + " wins!";
                 GameOver();
             }
         } else if (ctRules.ToString() == "Bounces") {
@@ -93,14 +97,25 @@ public class GameLogic : MonoBehaviour {
 
     public void GameOver()
     {
-        ballLogic.Stop();
-        Button.SetActive(true);
+        resetButton.SetActive(true);
+        menuButton.SetActive(true);
+        ballLogic.ResetBall("Stop");
     }
     public void RestartGame()
     {
         playerScore = 0;
         computerScore = 0;
         bounces = 0;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        resetButton.SetActive(false);
+        menuButton.SetActive(false);
+        winner.text = "";
+        ballLogic.ResetBall("Start");
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
     }
 }
