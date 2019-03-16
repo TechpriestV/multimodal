@@ -1,4 +1,4 @@
-# multimodal
+# Pong AR
 Project for DT2140  Multimodal Interaction and Interfaces
 A brand new take on the old pong classic, now in augmented reality for iOS devices.
 
