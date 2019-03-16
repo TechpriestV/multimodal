@@ -1,15 +1,18 @@
 # multimodal
 Project for DT2140  Multimodal Interaction and Interfaces
-Using this as a shared notepad for now
+A brand new take on the old pong classic, now in augmented reality for iOS devices.
+
+
+------------------
+## Shared development dashboard
 
 ### Ball
-Basically done. 
+Done. 
 We might want to add a change of speed or angle depending on where on the paddle we hit the ball.
 We might want to add curve to the ball depending on velocity of the paddle when collision with ball occurs.
 
 ### Player control
-Versions with touch interaction with the paddle are complete.
-We want to add a version where we remove the visible paddle and give the camera a rigidbody, using it as the player paddle.
+Versions with touch interaction with the paddle are complete. Haptic steering as well.
 
 ### Computer control
 Done.
@@ -17,20 +20,18 @@ Unless we want to add some unpredicatable behaviour?
 
 ### Board
 Done. 
-Some design and recolouring perhaps?
+Some design changes and recolouring perhaps?
 
 ### UI
-Very basic.
 A very basic menu where you can choose between to play, read about the game or exit the application.
 When someone wins a "game over" objects appears with who won and if you want to play again. 
 
 ### Game rules
-The first one to score 5 times wins. 
 Should score be displayed in augumented reality, projected in the real world - or as currently implemented?
 
 ### SFX
 Done.
-Sound effects for winning, losing and game soundtrack are already in the game if we want to add those.
+Sound effects for winning, losing and game soundtrack are already in the game and pre-implemented if we want to add those.
 
 
 ---------
